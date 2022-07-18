@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int             @id() @default(autoincrement())
+  name  String
+  email String          @unique
+  pwd   String
+  cart  OrderLineItem[]
+  role  Role            @default(BASE)
+  Order Order[]
+
+  @@index([email])
+}
+
+model Product {
+  id            Int             @id() @default(autoincrement())
+  name          String          @unique
+  available     Boolean         @default(true)
+  price         Float
+  images        String[]        @default(["https://newhorizonindia.edu/nhengineering/mca/wp-content/uploads/2020/01/default-placeholder.png"])
+  desc          String          @default("Product Descriptin Not Available")
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  deletedAt     DateTime?
+  OrderItem     OrderItem[]
+  OrderLineItem OrderLineItem[]
+  cateGory      CateGory[]
+}
+
+model CateGory {
+  id      Int       @id() @default(autoincrement())
+  name    String    @unique
+  Product Product[]
+}
+
+model OrderLineItem {
+  id        Int     @id() @default(autoincrement())
+  quantity  Int     @default(1)
+  product   Product @relation(fields: [productId], references: [id])
+  User      User?   @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  userId    Int?
+  productId Int
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  user      User        @relation(fields: [userId], references: [id])
+  userId    Int
+  OrderItem OrderItem[]
+}
+
+model OrderItem {
+  id           Int     @id @default(autoincrement())
+  product      Product @relation(fields: [productId], references: [id])
+  productId    Int
+  quantity     Int
+  address      String
+  shipmentName String
+  order        Order   @relation(fields: [orderId], references: [id])
+  orderId      Int
+}
+
+enum Role {
+  BASE
+  ADMIN
+}
