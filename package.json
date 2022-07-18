@@ -12,6 +12,7 @@
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",
+    "start": "node dist/index",
     "dev": "nodemon dist/index"
   },
   "keywords": [],
