@@ -22,6 +22,9 @@ async function main() {
 
   app.use(verifyAccessToken)
 
+  app.get("/", (req, res) => {
+    return res.status(200).json("Hello Bob")
+  })
   app.use("/user", userRoute)
   app.use("/product", productRoute)
   app.use("/cart", cartRoute)
