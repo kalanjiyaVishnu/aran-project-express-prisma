@@ -11,7 +11,8 @@
   },
   "scripts": {
     "watch": "tsc -w",
-    "build": "tsc && prisma generate",
+    "postinstall": "tsc",
+    "build": "prisma generate",
     "start": "node dist/index",
     "dev": "nodemon dist/index"
   },
