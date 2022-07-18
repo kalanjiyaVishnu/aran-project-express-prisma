@@ -29,10 +29,10 @@ authRoute.post("/register", async (req, res) => {
                 role: role ? role : client_1.Role.BASE,
             },
         });
-        res.json({ user });
+        return res.json({ user });
     }
     catch (err) {
-        res.status(400).json({ err });
+        return res.status(400).json({ err });
     }
 });
 authRoute.get("/me", async (req, res) => {
@@ -44,8 +44,6 @@ authRoute.get("/me", async (req, res) => {
     });
     !user && res.status(400).send({ err: "UnAuth" });
     return res.json({ user });
-});
-authRoute.get("/logout", async (req, res) => {
 });
 authRoute.post("/login", async (req, res) => {
     const { email, pass } = req.body;

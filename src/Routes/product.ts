@@ -1,6 +1,6 @@
-import { verifyAccessAndAdmin } from "../utils/authTokenVerify"
 import { Product } from "@prisma/client"
 import { Router } from "express"
+import { verifyAccessAndAdmin } from "../utils/authTokenVerify"
 import prisma from "../utils/prisma"
 const productRoute = Router()
 

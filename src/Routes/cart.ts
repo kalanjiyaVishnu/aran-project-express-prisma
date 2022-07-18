@@ -1,7 +1,7 @@
 import { Router } from "express"
 import {
   verifyAccessAndAdmin,
-  verifyAccessToken,
+  verifyAccessToken
 } from "../utils/authTokenVerify"
 import prisma from "../utils/prisma"
 const cartRoute = Router()

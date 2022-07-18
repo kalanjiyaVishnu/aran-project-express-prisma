@@ -34,7 +34,7 @@ orderRoute.get("/items", verifyAccessToken, async (req: any, res) => {
 })
 
 orderRoute.post("/buy", async (req: any, res) => {
-  const { pid, quantity = 1, address, orderId, shipmentName } = req.body
+  const { pid, quantity = 1, address, shipmentName } = req.body
   try {
     await prisma.user.update({
       where: {

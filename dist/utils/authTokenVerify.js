@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyAccessAndAdmin = exports.verifyAccessToken = void 0;
 const client_1 = require("@prisma/client");
-const constants_1 = require("./constants");
 const jsonwebtoken_1 = require("jsonwebtoken");
+const constants_1 = require("./constants");
 const prisma_1 = __importDefault(require("./prisma"));
 const verifyAccessToken = async (req, res, next) => {
     if (!req.cookies["access-token"]) {

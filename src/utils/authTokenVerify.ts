@@ -1,7 +1,7 @@
 import { Role } from "@prisma/client"
-import { ACCESS_TOKEN } from "./constants"
 import { NextFunction } from "express"
 import { verify } from "jsonwebtoken"
+import { ACCESS_TOKEN } from "./constants"
 import prisma from "./prisma"
 
 export const verifyAccessToken = async (req: any, res: any, next: any) => {

@@ -14,8 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const authTokenVerify_1 = require("../utils/authTokenVerify");
 const express_1 = require("express");
+const authTokenVerify_1 = require("../utils/authTokenVerify");
 const prisma_1 = __importDefault(require("../utils/prisma"));
 const productRoute = (0, express_1.Router)();
 productRoute.get("/", async (_, res) => {

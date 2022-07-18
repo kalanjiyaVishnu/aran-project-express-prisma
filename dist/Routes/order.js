@@ -34,7 +34,7 @@ orderRoute.get("/items", authTokenVerify_1.verifyAccessToken, async (req, res) =
     return res.status(200).json({ data: orders });
 });
 orderRoute.post("/buy", async (req, res) => {
-    const { pid, quantity = 1, address, orderId, shipmentName } = req.body;
+    const { pid, quantity = 1, address, shipmentName } = req.body;
     try {
         await prisma_1.default.user.update({
             where: {

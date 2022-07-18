@@ -29,9 +29,9 @@ authRoute.post("/register", async (req, res) => {
         role: role ? role : Role.BASE,
       },
     })
-    res.json({ user })
+    return res.json({ user })
   } catch (err) {
-    res.status(400).json({ err })
+    return res.status(400).json({ err })
   }
 })
 authRoute.get("/me", async (req: any, res) => {
@@ -47,11 +47,7 @@ authRoute.get("/me", async (req: any, res) => {
   return res.json({ user })
 })
 
-authRoute.get("/logout", async (req, res) => {
-
-  
-
-})
+// authRoute.get("/logout", async (req, res) => {})
 authRoute.post("/login", async (req, res) => {
   const { email, pass }: { email: string; pass: string } = req.body
 

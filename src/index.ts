@@ -1,14 +1,14 @@
 import cookieParser from "cookie-parser"
 import cors from "cors"
+import { config } from "dotenv"
 import express from "express"
 import authRoute from "./Routes/auth"
+import cartRoute from "./Routes/cart"
+import orderRoute from "./Routes/order"
+import productRoute from "./Routes/product"
 import userRoute from "./Routes/user"
 import { verifyAccessToken } from "./utils/authTokenVerify"
 import prisma from "./utils/prisma"
-import { config } from "dotenv"
-import productRoute from "./Routes/product"
-import cartRoute from "./Routes/cart"
-import orderRoute from "./Routes/order"
 const app = express()
 
 async function main() {
@@ -22,8 +22,8 @@ async function main() {
 
   app.use(verifyAccessToken)
 
-  app.get("/", (req, res) => {
-    return res.status(200).json("Hello Bob")
+  app.get("/", (_, res) => {
+    res.status(200).json("Hello Bob")
   })
   app.use("/user", userRoute)
   app.use("/product", productRoute)
