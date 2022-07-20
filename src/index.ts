@@ -17,6 +17,9 @@ async function main() {
   app.use(
     cors({
       origin: "http://localhost:3000",
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      preflightContinue: false,
+      optionsSuccessStatus: 204,
       credentials: true,
     })
   )
@@ -26,6 +29,7 @@ async function main() {
   app.use(verifyAccessToken)
 
   app.get("/", (_, res) => {
+    console.log("hey bob")
     res.status(200).json("Hello Bob")
   })
   app.use("/user", userRoute)
