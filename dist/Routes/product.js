@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const authTokenVerify_1 = require("../utils/authTokenVerify");
 const prisma_1 = __importDefault(require("../utils/prisma"));
+const data_json_1 = __importDefault(require("../data.json"));
 const productRoute = (0, express_1.Router)();
 productRoute.get("/", async (_, res) => {
     let products = [];
@@ -189,5 +190,47 @@ productRoute.delete("/:pid", async (req, res) => {
     }
     return res.status(200).json({ data: product });
 });
+const addAllProduct = async () => {
+    data_json_1.default.map(async ({ name, price, categories, desc, size, thumb, images }) => {
+        let product;
+        try {
+            if (categories) {
+                product = await prisma_1.default.product.create({
+                    data: {
+                        desc,
+                        size,
+                        thumb,
+                        images,
+                        name,
+                        price: Number(price),
+                        cateGory: {
+                            connectOrCreate: categories.map((category) => {
+                                return {
+                                    create: {
+                                        name: category,
+                                    },
+                                    where: {
+                                        name: category,
+                                    },
+                                };
+                            }),
+                        },
+                    },
+                });
+            }
+            else {
+                product = await prisma_1.default.product.create({
+                    data: {
+                        name,
+                        price: Number(price),
+                    },
+                });
+            }
+        }
+        catch (e) {
+            console.log(e);
+        }
+    });
+};
 exports.default = productRoute;
 //# sourceMappingURL=product.js.map

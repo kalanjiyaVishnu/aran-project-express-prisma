@@ -12,11 +12,11 @@ authRoute.post("/register", async (req, res) => {
 
   const { name, pass, email, role } = req.body
   if (!name || !pass || !email) {
-    return res.status(400).send({ err: "Fields Required" })
+    return res.status(300).send({ err: "Fields Required" })
   }
 
   if (!email.includes("@") || email.length < 8) {
-    return res.status(400).send({ err: "Email Invalid" })
+    return res.status(300).send({ err: "Email Invalid" })
   }
 
   try {
@@ -31,18 +31,18 @@ authRoute.post("/register", async (req, res) => {
     })
     return res.json({ user })
   } catch (err) {
-    return res.status(400).json({ err })
+    return res.status(300).json({ err })
   }
 })
 authRoute.get("/me", async (req: any, res) => {
   if (!req.userId) {
-    return res.status(400).send({ err: "UnAuth" })
+    return res.send({ err: "UnAuth" })
   }
   const user = await prisma.user.findFirst({
     where: { id: req.userId },
   })
 
-  !user && res.status(400).send({ err: "UnAuth" })
+  !user && res.send({ err: "UnAuth" })
 
   return res.json({ user })
 })
@@ -52,11 +52,11 @@ authRoute.post("/login", async (req, res) => {
   const { email, pass }: { email: string; pass: string } = req.body
 
   if (!pass || !email) {
-    return res.status(400).send({ err: "Fields Required" })
+    return res.status(300).send({ err: "Fields Required" })
   }
 
   if (!email.includes("@") || email.length < 8) {
-    return res.status(400).send({ err: "Email Invalid" })
+    return res.status(300).send({ err: "Email Invalid" })
   }
 
   const user: User | null = await prisma.user.findFirst({
@@ -64,13 +64,13 @@ authRoute.post("/login", async (req, res) => {
   })
 
   if (!user) {
-    return res.status(400).json({ err: "User not Found with Curr Email" })
+    return res.status(300).json({ err: "User not Found with Curr Email" })
   }
 
   const isPassMatch = await compare(pass, user!.pwd)
 
   if (!isPassMatch) {
-    return res.status(400).send({ err: "Pass invalid" })
+    return res.status(300).send({ err: "Pass invalid" })
   }
 
   const token = sign({ userId: user!.id }, ACCESS_TOKEN, {

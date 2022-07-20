@@ -14,10 +14,10 @@ authRoute.post("/register", async (req, res) => {
     console.log(req.body);
     const { name, pass, email, role } = req.body;
     if (!name || !pass || !email) {
-        return res.status(400).send({ err: "Fields Required" });
+        return res.status(300).send({ err: "Fields Required" });
     }
     if (!email.includes("@") || email.length < 8) {
-        return res.status(400).send({ err: "Email Invalid" });
+        return res.status(300).send({ err: "Email Invalid" });
     }
     try {
         const hashedPasss = await (0, bcrypt_1.hash)(pass, 10);
@@ -32,36 +32,36 @@ authRoute.post("/register", async (req, res) => {
         return res.json({ user });
     }
     catch (err) {
-        return res.status(400).json({ err });
+        return res.status(300).json({ err });
     }
 });
 authRoute.get("/me", async (req, res) => {
     if (!req.userId) {
-        return res.status(400).send({ err: "UnAuth" });
+        return res.send({ err: "UnAuth" });
     }
     const user = await prisma_1.default.user.findFirst({
         where: { id: req.userId },
     });
-    !user && res.status(400).send({ err: "UnAuth" });
+    !user && res.send({ err: "UnAuth" });
     return res.json({ user });
 });
 authRoute.post("/login", async (req, res) => {
     const { email, pass } = req.body;
     if (!pass || !email) {
-        return res.status(400).send({ err: "Fields Required" });
+        return res.status(300).send({ err: "Fields Required" });
     }
     if (!email.includes("@") || email.length < 8) {
-        return res.status(400).send({ err: "Email Invalid" });
+        return res.status(300).send({ err: "Email Invalid" });
     }
     const user = await prisma_1.default.user.findFirst({
         where: { email },
     });
     if (!user) {
-        return res.status(400).json({ err: "User not Found with Curr Email" });
+        return res.status(300).json({ err: "User not Found with Curr Email" });
     }
     const isPassMatch = await (0, bcrypt_1.compare)(pass, user.pwd);
     if (!isPassMatch) {
-        return res.status(400).send({ err: "Pass invalid" });
+        return res.status(300).send({ err: "Pass invalid" });
     }
     const token = (0, jsonwebtoken_1.sign)({ userId: user.id }, constants_1.ACCESS_TOKEN, {
         expiresIn: "3d",

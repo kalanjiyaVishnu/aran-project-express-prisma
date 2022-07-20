@@ -17,8 +17,10 @@ const prisma_1 = __importDefault(require("./utils/prisma"));
 const app = (0, express_1.default)();
 async function main() {
     (0, dotenv_1.config)();
-    console.log(await prisma_1.default.cateGory.findMany());
-    app.use((0, cors_1.default)());
+    app.use((0, cors_1.default)({
+        origin: "http://localhost:3000",
+        credentials: true,
+    }));
     app.use(express_1.default.json());
     app.use((0, cookie_parser_1.default)());
     app.use(authTokenVerify_1.verifyAccessToken);

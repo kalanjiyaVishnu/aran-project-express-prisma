@@ -14,9 +14,12 @@ const app = express()
 async function main() {
   config()
 
-  console.log(await prisma.cateGory.findMany())
-
-  app.use(cors())
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true,
+    })
+  )
   app.use(express.json())
   app.use(cookieParser())
 
