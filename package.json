@@ -12,7 +12,7 @@
   "scripts": {
     "watch": "tsc -w",
     "postinstall": "tsc",
-    "build": "prisma generate",
+    "build": "npx prisma generate",
     "start": "node dist/index.js",
     "dev": "nodemon dist/index"
   },
