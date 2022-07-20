@@ -2,7 +2,6 @@ import { Product } from "@prisma/client"
 import { Router } from "express"
 import { verifyAccessAndAdmin } from "../utils/authTokenVerify"
 import prisma from "../utils/prisma"
-import productData from "../data.json"
 const productRoute = Router()
 
 productRoute.get("/", async (_, res) => {
@@ -211,65 +210,58 @@ productRoute.delete("/:pid", async (req, res) => {
   return res.status(200).json({ data: product })
 })
 
-const addAllProduct = async () => {
-  interface userProductInputs {
-    name: string
-    available: boolean
-    price: number
-    categories?: Array<string>
-    desc: string
-    size: Array<string>
-    thumb: string
-    images: Array<string>
-  }
+// const addAllProduct = async () => {
+//   interface userProductInputs {
+//     name: string
+//     available: boolean
+//     price: number
+//     categories?: Array<string>
+//     desc: string
+//     size: Array<string>
+//     thumb: string
+//     images: Array<string>
+//   }
 
-  productData.map(
-    async ({ name, price, categories, desc, size, thumb, images }) => {
-      let product
-      try {
-        if (categories) {
-          // const cats = await prisma.cateGory.createMany({
-          //   data: category.map((name: string) => ({ name })),
-          //   skipDuplicates: true,
-          // })
-
-          // console.log(cats)
-          product = await prisma.product.create({
-            data: {
-              desc,
-              size,
-              thumb,
-              images,
-              name,
-              price: Number(price),
-              cateGory: {
-                connectOrCreate: categories.map((category) => {
-                  return {
-                    create: {
-                      name: category,
-                    },
-                    where: {
-                      name: category,
-                    },
-                  }
-                }),
-              },
-            },
-          })
-        } else {
-          product = await prisma.product.create({
-            data: {
-              name,
-              price: Number(price),
-            },
-          })
-        }
-      } catch (e) {
-        console.log(e)
-      }
-    }
-  )
-}
+//   productData.map(
+//     async ({ name, price, categories, desc, size, thumb, images }) => {
+//       try {
+//         if (categories) {
+//           await prisma.product.create({
+//             data: {
+//               desc,
+//               size,
+//               thumb,
+//               images,
+//               name,
+//               price: Number(price),
+//               cateGory: {
+//                 connectOrCreate: categories.map((category) => {
+//                   return {
+//                     create: {
+//                       name: category,
+//                     },
+//                     where: {
+//                       name: category,
+//                     },
+//                   }
+//                 }),
+//               },
+//             },
+//           })
+//         } else {
+//           await prisma.product.create({
+//             data: {
+//               name,
+//               price: Number(price),
+//             },
+//           })
+//         }
+//       } catch (e) {
+//         console.log(e)
+//       }
+//     }
+//   )
+// }
 // addAllProduct()
 
 export default productRoute
