@@ -3,7 +3,10 @@ import {
   verifyAccessAndAdmin,
   verifyAccessToken,
 } from "../utils/authTokenVerify"
+import sendMail from "../utils/mailHandle"
 import prisma from "../utils/prisma"
+
+const stripe = require("stripe")(process.env.STRIPE_SEC_KEY)
 const orderRoute = Router()
 
 orderRoute.get("/items", verifyAccessToken, async (req: any, res) => {
@@ -15,7 +18,11 @@ orderRoute.get("/items", verifyAccessToken, async (req: any, res) => {
         Order: {
           include: {
             _count: true,
-            OrderItem: true,
+            OrderItem: {
+              include: {
+                product: true,
+              },
+            },
           },
         },
       },
@@ -34,9 +41,13 @@ orderRoute.get("/items", verifyAccessToken, async (req: any, res) => {
 })
 
 orderRoute.post("/buy", async (req: any, res) => {
+  console.log("-----------order init")
+
+  console.log(req.body)
+
   const { pid, quantity = 1, address, shipmentName } = req.body
   try {
-    await prisma.user.update({
+    const data = await prisma.user.update({
       where: {
         id: Number(req.userId),
       },
@@ -54,28 +65,54 @@ orderRoute.post("/buy", async (req: any, res) => {
           },
         },
       },
+      select: {
+        email: true,
+        name: true,
+      },
     })
-    // await prisma.orderItem.create({
-    //   data: {
-    //     productId: Number(pid),
-    //     quantity: quantity,
-    //     address,
-    //     orderId: Number(orderId),
-    //     shipmentName,
-    //   },
-    // })
-    // await prisma.user.update({
-    //   where: {
-    //     id: req.userId,
-    //   },
-    //   data: {
-    //     cart: {
-    //       connect: {
-    //        id:
-    //       },
-    //     },
-    //   },
-    // })
+    const p = await prisma.product.findFirst({ where: { id: Number(pid) } })
+    console.log("after ordering ", data)
+    console.log(p)
+
+    // payment
+    try {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        mode: "payment",
+        line_items: [
+          {
+            price_data: {
+              currency: "USD",
+              product_data: {
+                name: p!.name,
+              },
+              unit_amount:  100,
+            },
+            quantity,
+          },
+        ],
+        success_url: `${process.env.CLIENT_URL}/success`,
+        cancel_url: `${process.env.CLIENT_URL}/cancel`,
+      })
+      await sendMail({
+        to: data.email,
+        html: `
+            <p>Hi 
+            ${data.name} 
+            The Required Prodcut You Purchaced Have Been TRacked And PayMent Have
+            Been Made Down and Will Let you When We Can Get It At Your DoorStep
+          </p>
+          <h1>Thank You</h1>
+          <a href="">Continue YOur Shopping</a>
+          <a href="${session.url}">Plese pay the amount</a>
+        `,
+        subject: "Order Confirmation",
+        text: "Confirmation For Your Order",
+      })
+      return res.status(200).json({ success: true, url: session.url })
+    } catch (e) {
+      return res.status(500).json({ error: e.message })
+    }
   } catch (e) {
     console.log(e)
 
@@ -86,8 +123,6 @@ orderRoute.post("/buy", async (req: any, res) => {
       .status(500)
       .end()
   }
-
-  return res.status(200).json({ success: true })
 })
 
 orderRoute.post("/addItem", async (req: any, res) => {
@@ -102,18 +137,12 @@ orderRoute.post("/addItem", async (req: any, res) => {
         shipmentName,
       },
     })
-    // await prisma.user.update({
-    //   where: {
-    //     id: req.userId,
-    //   },
-    //   data: {
-    //     cart: {
-    //       connect: {
-    //        id:
-    //       },
-    //     },
-    //   },
-    // })
+    await sendMail({
+      to: "kalanjiyavishnu@outlook.com",
+      html: "adsfadsf",
+      subject: "asdf",
+      text: "adsf",
+    })
   } catch (e) {
     console.log(e)
 
@@ -174,4 +203,15 @@ orderRoute.delete("/:pid", async (req, res) => {
 
   return res.status(200).json({ data: product })
 })
+
+orderRoute.get("/clear-orders", verifyAccessAndAdmin, async (_req, res) => {
+  try {
+    await prisma.order.deleteMany()
+  } catch (error) {
+    console.log(error)
+    res.send({ err: error.message }).end()
+  }
+  res.send({ success: true })
+})
+
 export default orderRoute

@@ -9,9 +9,12 @@ const jsonwebtoken_1 = require("jsonwebtoken");
 const constants_1 = require("./constants");
 const prisma_1 = __importDefault(require("./prisma"));
 const verifyAccessToken = async (req, res, next) => {
+    console.log("something");
     if (!req.cookies["access-token"]) {
+        console.log("no cookie sent");
         return next();
     }
+    console.log("something");
     let token;
     try {
         token = (0, jsonwebtoken_1.verify)(req.cookies["access-token"], constants_1.ACCESS_TOKEN);

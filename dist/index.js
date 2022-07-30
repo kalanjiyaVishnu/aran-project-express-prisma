@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const authTokenVerify_1 = require("./utils/authTokenVerify");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = require("dotenv");
@@ -12,7 +13,6 @@ const cart_1 = __importDefault(require("./Routes/cart"));
 const order_1 = __importDefault(require("./Routes/order"));
 const product_1 = __importDefault(require("./Routes/product"));
 const user_1 = __importDefault(require("./Routes/user"));
-const authTokenVerify_1 = require("./utils/authTokenVerify");
 const prisma_1 = __importDefault(require("./utils/prisma"));
 const app = (0, express_1.default)();
 async function main() {
@@ -26,11 +26,11 @@ async function main() {
     }));
     app.use(express_1.default.json());
     app.use((0, cookie_parser_1.default)());
-    app.use(authTokenVerify_1.verifyAccessToken);
     app.get("/", (_, res) => {
         console.log("hey bob");
         res.status(200).json("Hello Bob");
     });
+    app.use(authTokenVerify_1.verifyAccessToken);
     app.use("/user", user_1.default);
     app.use("/product", product_1.default);
     app.use("/cart", cart_1.default);

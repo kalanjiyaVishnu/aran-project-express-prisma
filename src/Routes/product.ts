@@ -69,6 +69,22 @@ productRoute.get("/:pid", async (req, res) => {
 
   return res.status(200).json({ data: product })
 })
+productRoute.get("/get/categories", async (_, res) => {
+  let CateGories
+  try {
+    CateGories = await prisma.cateGory.findMany()
+  } catch (e) {
+    console.log(e)
+    return res
+      .json({
+        err: "No CateGories Found",
+      })
+      .status(500)
+      .end()
+  }
+
+  return res.status(200).json({ data: CateGories })
+})
 
 productRoute.post("/add", verifyAccessAndAdmin, async (req, res) => {
   interface userProductInputs {

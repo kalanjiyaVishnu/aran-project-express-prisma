@@ -1,18 +1,26 @@
 import { Router } from "express"
 import {
   verifyAccessAndAdmin,
-  verifyAccessToken
+  verifyAccessToken,
 } from "../utils/authTokenVerify"
 import prisma from "../utils/prisma"
 const cartRoute = Router()
 
 cartRoute.get("/items", verifyAccessToken, async (req: any, res) => {
-  let cart: any = []
+  let user: any = []
   try {
-    cart = await prisma.user.findFirst({
+    user = await prisma.user.findFirst({
       where: { id: req.userId! },
-      select: { cart: true },
+      include: {
+        cart: {
+          include: {
+            product: true,
+          },
+        },
+        Order: true,
+      },
     })
+    console.log(user)
   } catch (e) {
     console.log(e)
     return res
@@ -22,20 +30,22 @@ cartRoute.get("/items", verifyAccessToken, async (req: any, res) => {
       .status(500)
       .end()
   }
-
+  const { cart } = user
   return res.status(200).json({ data: cart })
 })
 
 cartRoute.post("/addItem", async (req: any, res) => {
   const { pid, quantity = 1 } = req.body
   try {
-    await prisma.orderLineItem.create({
+    const addedProduct = await prisma.orderLineItem.create({
       data: {
         productId: Number(pid),
         quantity: quantity,
         userId: req.userId,
       },
     })
+
+    res.status(200).json({ success: true, id: addedProduct.id })
     // await prisma.user.update({
     //   where: {
     //     id: req.userId,
@@ -58,8 +68,7 @@ cartRoute.post("/addItem", async (req: any, res) => {
       .status(500)
       .end()
   }
-
-  return res.status(200).json({ success: true })
+  return
 })
 
 cartRoute.put("/:pid", verifyAccessAndAdmin, async (req, res) => {
@@ -88,6 +97,8 @@ cartRoute.put("/:pid", verifyAccessAndAdmin, async (req, res) => {
 })
 
 cartRoute.delete("/:pid", async (req, res) => {
+  console.log(req.params.pid)
+
   let product
   try {
     product = await prisma.orderLineItem.delete({

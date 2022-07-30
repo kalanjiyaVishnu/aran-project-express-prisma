@@ -1,3 +1,4 @@
+import { verifyAccessToken } from "./utils/authTokenVerify"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import { config } from "dotenv"
@@ -7,8 +8,8 @@ import cartRoute from "./Routes/cart"
 import orderRoute from "./Routes/order"
 import productRoute from "./Routes/product"
 import userRoute from "./Routes/user"
-import { verifyAccessToken } from "./utils/authTokenVerify"
 import prisma from "./utils/prisma"
+
 const app = express()
 
 async function main() {
@@ -26,12 +27,11 @@ async function main() {
   app.use(express.json())
   app.use(cookieParser())
 
-  app.use(verifyAccessToken)
-
   app.get("/", (_, res) => {
     console.log("hey bob")
     res.status(200).json("Hello Bob")
   })
+  app.use(verifyAccessToken)
   app.use("/user", userRoute)
   app.use("/product", productRoute)
   app.use("/cart", cartRoute)

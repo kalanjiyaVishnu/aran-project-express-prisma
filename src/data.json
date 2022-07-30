@@ -1,145 +1,188 @@
-[{
-    "name": "Casement home window",
-    "price": 12000,
-    "desc": "Long and wide windows, such as casement windows, which operate by turning a crank, have gained extreme popularity over the last few years. They are easy to clean, provide excellent natural ventilation, and are customizable, making them ideal for modern homes in hot climates. Such window designs usually open inward and can be angled to steer the natural breeze into the building.",
-    "size": [
-      "xl",
-      "lg"
-    ],
-    "categories": [
-      "Windows",
-      "Casement Windows"
-    ],
-    "images": [
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_1.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_3.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_5.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_2.jpg"
-    ],
-    "thumb": "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_4.jpg"
-  },{
-    "name": "Awning Windows",
-    "price": 16000,
-    "desc": "Awning windows are almost similar to casement windows, except these have hinges on the top. They open outward, providing enough ventilation and natural light. They work well in confined spaces, such as in a bathroom or kitchen.",
-    "size": [
-      "sm",
-      "lg",
-      "xl"
-    ],
-    "categories": [
-      "Windows",
-      "Awning Windows"
-    ],
-    "images": [
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Awning-windows_1.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Awning-windows_6.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Awning-windows_7.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Awning-windows.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Awning-windows_2.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Awning-windows_3.jpg"
-    ],
-    "thumb": "https://cdn.homecrux.com/wp-content/uploads/2018/11/Awning-windows_8.jpg"
-  },{
-    "name": "Picture Windows",
-    "price": 16000,
-    "desc": "If you ever wanted to replace your opaque doors or walls with see-through glass windows, then picture windows are recommended. They are commonly used in combination with additional windows for an attractive aesthetic. The best place to install picture windows is where they will offer the best views of the outside.",
-    "size": [
-      "sm",
-      "lg",
-      "xl"
-    ],
-    "categories": [
-      "Windows",
-      "Picture Windows"
-    ],
-    "thumb": "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_6.jpg",
-    "images": [
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_5.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_5.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_2.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_2.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_3.jpg"
-    ]
-  },{
-    "name": "Casement home window 2",
-    "price": 12000,
-    "desc": "Long and wide windows, such as casement windows, which operate by turning a crank, have gained extreme popularity over the last few years. They are easy to clean, provide excellent natural ventilation, and are customizable, making them ideal for modern homes in hot climates. Such window designs usually open inward and can be angled to steer the natural breeze into the building.",
-    "size": [
-      "xl",
-      "lg"
-    ],
-    "categories": [
-      "Windows",
-      "Casement Windows"
-    ],
-    "images": [
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_1.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_3.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_5.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_2.jpg"
-    ],
-    "thumb": "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_2.jpg\n"
-  },{
-    "name": "Single-Hung windows",
-    "price": 12000,
-    "desc": "Long and wide windows, such as casement windows, which operate by turning a crank, have gained extreme popularity over the last few years. They are easy to clean, provide excellent natural ventilation, and are customizable, making them ideal for modern homes in hot climates. Such window designs usually open inward and can be angled to steer the natural breeze into the building.",
-    "size": [
-      "xl",
-      "lg"
-    ],
-    "categories": [
-      "Windows",
-      "Casement Windows"
-    ],
-    "images": [
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_4.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_1.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_3.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_5.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_2.jpg\n"
-    ],
-    "thumb": "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_5.jpg"
-  },{
-    "name": "Glazed Doors",
-    "price": 12000,
-    "desc": "Long and wide windows, such as casement windows, which operate by turning a crank, have gained extreme popularity over the last few years. They are easy to clean, provide excellent natural ventilation, and are customizable, making them ideal for modern homes in hot climates. Such window designs usually open inward and can be angled to steer the natural breeze into the building.",
-    "size": [
-      "xl",
-      "lg"
-    ],
-    "categories": [
-      "Doors",
-      "Glazed Doors"
-    ],
-    "images": [
-      "https://i0.wp.com/theconstructor.org/wp-content/uploads/2016/06/glazed-doors.jpg?resize=313%2C306&ssl=1",
-      "https://img.edilportale.com/product-thumbs/b_PORTAPIVOT-MINI-MAX-SINGLE-DOOR-FIXED-Portapivot-554025-rele982db50.jpg",
-      "https://news.iqglassuk.com/wp-content/uploads/2020/01/Broadhurst-Gardens-IQ-Glass-5-1170x550.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_5.jpg",
-      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_2.jpg"
-    ],
-    "thumb": "https://www.jbkind.com/wp-content/uploads/2022/04/Glazed-doors-855px.jpg"
-  },{
+[
+  {
+    "id": 7,
     "name": "Flush Doors",
-    "price": "8000",
-    "desc": "Long and wide windows, such as casement windows, which operate by turning a crank, have gained extreme popularity over the last few years. They are easy to clean, provide excellent natural ventilation, and are customizable, making them ideal for modern homes in hot climates. Such window designs usually open inward and can be angled to steer the natural breeze into the building.",
-    "size": [
-      "xl",
-      "lg"
-    ],
-    "categories": [
-      "Glazed Internal Doors",
-      "Doors"
-    ],
+    "available": true,
+    "price": 8000,
     "images": [
+      "https://newhorizonindia.edu/nhengineering/mca/wp-content/uploads/2020/01/default-placeholder.png",
       "https://mccoymart.com/post/wp-content/uploads/2019/01/flush-doors.jpg",
       "https://image.made-in-china.com/2f0j00aCBENRJhHZYU/China-Latest-Desighs-Single-Flush-Doors-for-Home.jpg",
       "https://www.greenply.com/assets/pictures/106/content/1_%284%29.jpg",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIHWpih9c2snJtktR-pkSl909rNu4Jdey7Q&usqp=CAU",
       "https://www.centuryply.com/assets/img/blog/17-08-21/best-flush-door.jpg"
     ],
-    "thumb": "https://5.imimg.com/data5/SELLER/Default/2020/11/JE/VH/VR/4549476/hdhmr-flush-door-500x500.jpg\n"
-  }]
+    "thumb": "https://5.imimg.com/data5/SELLER/Default/2020/11/JE/VH/VR/4549476/hdhmr-flush-door-500x500.jpg\n",
+    "desc": "Product Descriptin Not Available",
+    "createdAt": "2022-07-20T04:04:56.119Z",
+    "updatedAt": "2022-07-20T05:26:05.370Z",
+    "deletedAt": null,
+    "size": [
+      "normal"
+    ],
+    "cateGory": [
+      {
+        "id": 5,
+        "name": "Doors"
+      },
+      {
+        "id": 7,
+        "name": "Glazed Internal Doors"
+      }
+    ],
+    "_count": {
+      "OrderItem": 0,
+      "OrderLineItem": 0,
+      "cateGory": 2
+    }
+  },
+  {
+    "id": 6,
+    "name": "Glazed Doors",
+    "available": true,
+    "price": 12000,
+    "images": [
+      "https://newhorizonindia.edu/nhengineering/mca/wp-content/uploads/2020/01/default-placeholder.png",
+      "https://i0.wp.com/theconstructor.org/wp-content/uploads/2016/06/glazed-doors.jpg?resize=313%2C306&ssl=1",
+      "https://img.edilportale.com/product-thumbs/b_PORTAPIVOT-MINI-MAX-SINGLE-DOOR-FIXED-Portapivot-554025-rele982db50.jpg",
+      "https://news.iqglassuk.com/wp-content/uploads/2020/01/Broadhurst-Gardens-IQ-Glass-5-1170x550.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_5.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_2.jpg"
+    ],
+    "thumb": "https://www.jbkind.com/wp-content/uploads/2022/04/Glazed-doors-855px.jpg",
+    "desc": "Product Descriptin Not Available",
+    "createdAt": "2022-07-20T04:04:34.919Z",
+    "updatedAt": "2022-07-20T05:26:53.435Z",
+    "deletedAt": null,
+    "size": [
+      "normal"
+    ],
+    "cateGory": [
+      {
+        "id": 5,
+        "name": "Doors"
+      },
+      {
+        "id": 6,
+        "name": "Glazed Doors"
+      }
+    ],
+    "_count": {
+      "OrderItem": 0,
+      "OrderLineItem": 0,
+      "cateGory": 2
+    }
+  },
+  {
+    "id": 5,
+    "name": "Single-Hung windows",
+    "available": true,
+    "price": 12000,
+    "images": [
+      "https://newhorizonindia.edu/nhengineering/mca/wp-content/uploads/2020/01/default-placeholder.png",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_4.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_1.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_3.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_5.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_2.jpg\n"
+    ],
+    "thumb": "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_5.jpg",
+    "desc": "Product Descriptin Not Available",
+    "createdAt": "2022-07-20T04:04:27.003Z",
+    "updatedAt": "2022-07-20T05:27:13.675Z",
+    "deletedAt": null,
+    "size": [
+      "normal"
+    ],
+    "cateGory": [
+      {
+        "id": 1,
+        "name": "Windows"
+      },
+      {
+        "id": 4,
+        "name": "Casement Windows"
+      }
+    ],
+    "_count": {
+      "OrderItem": 0,
+      "OrderLineItem": 0,
+      "cateGory": 2
+    }
+  },
+  {
+    "id": 4,
+    "name": "Casement home window 2",
+    "available": true,
+    "price": 12000,
+    "images": [
+      "https://newhorizonindia.edu/nhengineering/mca/wp-content/uploads/2020/01/default-placeholder.png",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_1.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_3.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_5.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/casement-windows_2.jpg"
+    ],
+    "thumb": "https://cdn.homecrux.com/wp-content/uploads/2018/11/Double-hung-vs-single-hung-windows_2.jpg\n",
+    "desc": "Product Descriptin Not Available",
+    "createdAt": "2022-07-20T04:04:20.175Z",
+    "updatedAt": "2022-07-20T05:27:40.155Z",
+    "deletedAt": null,
+    "size": [
+      "normal"
+    ],
+    "cateGory": [
+      {
+        "id": 1,
+        "name": "Windows"
+      },
+      {
+        "id": 4,
+        "name": "Casement Windows"
+      }
+    ],
+    "_count": {
+      "OrderItem": 0,
+      "OrderLineItem": 0,
+      "cateGory": 2
+    }
+  },
+  {
+    "id": 3,
+    "name": "Picture Windows",
+    "available": true,
+    "price": 16000,
+    "images": [
+      "https://newhorizonindia.edu/nhengineering/mca/wp-content/uploads/2020/01/default-placeholder.png",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_5.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_5.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_2.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_2.jpg",
+      "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_3.jpg"
+    ],
+    "thumb": "https://cdn.homecrux.com/wp-content/uploads/2018/11/picture-windows_6.jpg",
+    "desc": "Product Descriptin Not Available",
+    "createdAt": "2022-07-20T04:04:13.598Z",
+    "updatedAt": "2022-07-20T05:28:02.906Z",
+    "deletedAt": null,
+    "size": [
+      "normal"
+    ],
+    "cateGory": [
+      {
+        "id": 1,
+        "name": "Windows"
+      },
+      {
+        "id": 3,
+        "name": "Picture Windows"
+      }
+    ],
+    "_count": {
+      "OrderItem": 0,
+      "OrderLineItem": 0,
+      "cateGory": 2
+    }
+  }
+]

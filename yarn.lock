@@ -111,6 +111,18 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-18.0.4.tgz"
   integrity sha512-M0+G6V0Y4YV8cqzHssZpaNCqvYwlCiulmm0PwpNLF55r/+cT8Ol42CHRU1SEaYFH2rTwiiE1aYg/2g2rrtGdPA==
 
+"@types/node@>=8.1.0":
+  version "18.0.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.6.tgz#0ba49ac517ad69abe7a1508bc9b3a5483df9d5d7"
+  integrity sha512-/xUq6H2aQm261exT6iZTMifUySEt4GR5KX8eYyY+C4MSNPqSh9oNIP7tz2GLKTlFaiBbgZNxffoR3CVRG+cljw==
+
+"@types/nodemailer@^6.4.4":
+  version "6.4.4"
+  resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.4.tgz#c265f7e7a51df587597b3a49a023acaf0c741f4b"
+  integrity sha512-Ksw4t7iliXeYGvIQcSIgWQ5BLuC/mljIEbjf615svhZL10PE9t+ei8O9gDaD3FPCasUJn9KTLwz2JFJyiiyuqw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/qs@*":
   version "6.9.7"
   resolved "https://registry.npmjs.org/@types/qs/-/qs-6.9.7.tgz"
@@ -578,6 +590,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+heroicons@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/heroicons/-/heroicons-1.0.6.tgz#1c2b2e0935a46516c3513afacfcaea71f0b68dd7"
+  integrity sha512-5bxTsG2hyNBF0l+BrFlZlR5YngQNMfl0ggJjIRkMSADBQbaZMoTg47OIQzq6f1mpEZ85HEIgSC4wt5AeFM9J2Q==
+
 http-errors@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/http-errors/-/http-errors-2.0.0.tgz"
@@ -829,6 +846,11 @@ node-fetch@^2.6.7:
   dependencies:
     whatwg-url "^5.0.0"
 
+nodemailer@^6.7.7:
+  version "6.7.7"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.7.7.tgz#e522fbd7507b81c51446d3f79c4603bf00083ddd"
+  integrity sha512-pOLC/s+2I1EXuSqO5Wa34i3kXZG3gugDssH+ZNCevHad65tc8vQlCQpOLaUjopvkRQKm2Cki2aME7fEOPRy3bA==
+
 nodemon@^2.0.19:
   version "2.0.19"
   resolved "https://registry.npmjs.org/nodemon/-/nodemon-2.0.19.tgz"
@@ -947,6 +969,13 @@ qs@6.10.3:
   version "6.10.3"
   resolved "https://registry.npmjs.org/qs/-/qs-6.10.3.tgz"
   integrity sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==
+  dependencies:
+    side-channel "^1.0.4"
+
+qs@^6.10.3:
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
+  integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==
   dependencies:
     side-channel "^1.0.4"
 
@@ -1112,6 +1141,14 @@ strip-ansi@^6.0.1:
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
   dependencies:
     ansi-regex "^5.0.1"
+
+stripe@^9.14.0:
+  version "9.14.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-9.14.0.tgz#4f78d7adb932ba2ea1b696cc2dea8a5ba9efbb33"
+  integrity sha512-nonEpYI7kPxZI8BGqlichBont9oHTBKFdKQV4LW6SvMAfYyQ95pL3vw1kqnW38oAui/c1sJqDOE2t8AoosOC9w==
+  dependencies:
+    "@types/node" ">=8.1.0"
+    qs "^6.10.3"
 
 supports-color@^5.5.0:
   version "5.5.0"

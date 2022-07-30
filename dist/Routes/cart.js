@@ -8,12 +8,20 @@ const authTokenVerify_1 = require("../utils/authTokenVerify");
 const prisma_1 = __importDefault(require("../utils/prisma"));
 const cartRoute = (0, express_1.Router)();
 cartRoute.get("/items", authTokenVerify_1.verifyAccessToken, async (req, res) => {
-    let cart = [];
+    let user = [];
     try {
-        cart = await prisma_1.default.user.findFirst({
+        user = await prisma_1.default.user.findFirst({
             where: { id: req.userId },
-            select: { cart: true },
+            include: {
+                cart: {
+                    include: {
+                        product: true,
+                    },
+                },
+                Order: true,
+            },
         });
+        console.log(user);
     }
     catch (e) {
         console.log(e);
@@ -24,18 +32,20 @@ cartRoute.get("/items", authTokenVerify_1.verifyAccessToken, async (req, res) =>
             .status(500)
             .end();
     }
+    const { cart } = user;
     return res.status(200).json({ data: cart });
 });
 cartRoute.post("/addItem", async (req, res) => {
     const { pid, quantity = 1 } = req.body;
     try {
-        await prisma_1.default.orderLineItem.create({
+        const addedProduct = await prisma_1.default.orderLineItem.create({
             data: {
                 productId: Number(pid),
                 quantity: quantity,
                 userId: req.userId,
             },
         });
+        res.status(200).json({ success: true, id: addedProduct.id });
     }
     catch (e) {
         console.log(e);
@@ -46,7 +56,7 @@ cartRoute.post("/addItem", async (req, res) => {
             .status(500)
             .end();
     }
-    return res.status(200).json({ success: true });
+    return;
 });
 cartRoute.put("/:pid", authTokenVerify_1.verifyAccessAndAdmin, async (req, res) => {
     let product;
@@ -70,6 +80,7 @@ cartRoute.put("/:pid", authTokenVerify_1.verifyAccessAndAdmin, async (req, res) 
     return res.status(200).json({ data: product });
 });
 cartRoute.delete("/:pid", async (req, res) => {
+    console.log(req.params.pid);
     let product;
     try {
         product = await prisma_1.default.orderLineItem.delete({

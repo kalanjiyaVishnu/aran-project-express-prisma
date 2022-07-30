@@ -79,6 +79,22 @@ productRoute.get("/:pid", async (req, res) => {
     }
     return res.status(200).json({ data: product });
 });
+productRoute.get("/get/categories", async (_, res) => {
+    let CateGories;
+    try {
+        CateGories = await prisma_1.default.cateGory.findMany();
+    }
+    catch (e) {
+        console.log(e);
+        return res
+            .json({
+            err: "No CateGories Found",
+        })
+            .status(500)
+            .end();
+    }
+    return res.status(200).json({ data: CateGories });
+});
 productRoute.post("/add", authTokenVerify_1.verifyAccessAndAdmin, async (req, res) => {
     const { name, available, price, categories } = req.body;
     let product;

@@ -12,11 +12,11 @@ authRoute.post("/register", async (req, res) => {
 
   const { name, pass, email, role } = req.body
   if (!name || !pass || !email) {
-    return res.status(300).send({ err: "Fields Required" })
+    return res.send({ err: "Fields Required" })
   }
 
   if (!email.includes("@") || email.length < 8) {
-    return res.status(300).send({ err: "Email Invalid" })
+    return res.send({ err: "Email Invalid" })
   }
 
   try {
@@ -31,7 +31,7 @@ authRoute.post("/register", async (req, res) => {
     })
     return res.json({ user })
   } catch (err) {
-    return res.status(300).json({ err })
+    return res.json({ err })
   }
 })
 authRoute.get("/me", async (req: any, res) => {
@@ -52,11 +52,11 @@ authRoute.post("/login", async (req, res) => {
   const { email, pass }: { email: string; pass: string } = req.body
 
   if (!pass || !email) {
-    return res.status(300).send({ err: "Fields Required" })
+    return res.send({ err: "Fields Required" })
   }
 
   if (!email.includes("@") || email.length < 8) {
-    return res.status(300).send({ err: "Email Invalid" })
+    return res.send({ err: "Email Invalid" })
   }
 
   const user: User | null = await prisma.user.findFirst({
@@ -64,13 +64,13 @@ authRoute.post("/login", async (req, res) => {
   })
 
   if (!user) {
-    return res.status(300).json({ err: "User not Found with Curr Email" })
+    return res.json({ err: "User not Found with Curr Email" })
   }
 
   const isPassMatch = await compare(pass, user!.pwd)
 
   if (!isPassMatch) {
-    return res.status(300).send({ err: "Pass invalid" })
+    return res.send({ err: "Pass invalid" })
   }
 
   const token = sign({ userId: user!.id }, ACCESS_TOKEN, {
