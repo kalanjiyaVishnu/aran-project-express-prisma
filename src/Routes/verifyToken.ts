@@ -9,11 +9,11 @@ const verifyToken = async (req: any, res: Response, next: NextFunction) => {
   if (authHeader) {
     const token = authHeader
     try {
-      const decoded = jwt.verify(token, ACCESS_TOKEN)
+      const decoded: any = jwt.verify(token, ACCESS_TOKEN)
       let user
       try {
         user = await prisma.user.findFirst({
-          where: { id: token.userId },
+          where: { id: decoded.userId },
         })
       } catch {
         return next()
