@@ -1,4 +1,3 @@
-import { verifyAccessToken } from "./utils/authTokenVerify"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import { config } from "dotenv"
