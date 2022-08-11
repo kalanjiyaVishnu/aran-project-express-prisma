@@ -123,7 +123,7 @@ productRoute.get("/getByCat/:cat", async (req, res) => {
     }
 });
 productRoute.post("/add", authTokenVerify_1.verifyAccessAndAdmin, async (req, res) => {
-    const { name, available, price, categories } = req.body;
+    const { name, available, price, categories, images } = req.body;
     let product;
     try {
         if (categories) {
@@ -132,6 +132,7 @@ productRoute.post("/add", authTokenVerify_1.verifyAccessAndAdmin, async (req, re
                     name,
                     available,
                     price,
+                    images,
                     cateGory: {
                         connectOrCreate: categories.map((category) => {
                             return {
@@ -153,6 +154,7 @@ productRoute.post("/add", authTokenVerify_1.verifyAccessAndAdmin, async (req, re
                     name,
                     available,
                     price,
+                    images,
                 },
             });
         }

@@ -1,11 +1,10 @@
-import { verifyAccessToken } from "./../utils/authTokenVerify"
 import { Role, User } from "@prisma/client"
 import { compare, hash } from "bcrypt"
 import { Router } from "express"
 import { sign } from "jsonwebtoken"
 import { ACCESS_TOKEN } from "../utils/constants"
 import prisma from "../utils/prisma"
-
+import jwt_service from "../utils/verifyToken"
 const authRoute = Router()
 
 authRoute.post("/register", async (req, res) => {
@@ -35,18 +34,22 @@ authRoute.post("/register", async (req, res) => {
     return res.json({ err })
   }
 })
-authRoute.get("/me", verifyAccessToken, async (req: any, res) => {
-  if (!req.userId) {
-    return res.send({ err: "UnAuth" })
+authRoute.get(
+  "/me",
+  jwt_service.verifyTokenAndAuthorization,
+  async (req: any, res) => {
+    if (!req.userId) {
+      return res.send({ err: "UnAuth" })
+    }
+    const user = await prisma.user.findFirst({
+      where: { id: req.userId },
+    })
+
+    !user && res.send({ err: "UnAuth" })
+
+    return res.json({ user })
   }
-  const user = await prisma.user.findFirst({
-    where: { id: req.userId },
-  })
-
-  !user && res.send({ err: "UnAuth" })
-
-  return res.json({ user })
-})
+)
 
 // authRoute.get("/logout", async (req, res) => {})
 authRoute.post("/login", async (req, res) => {

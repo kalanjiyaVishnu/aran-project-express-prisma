@@ -3,13 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const authTokenVerify_1 = require("./../utils/authTokenVerify");
 const client_1 = require("@prisma/client");
 const bcrypt_1 = require("bcrypt");
 const express_1 = require("express");
 const jsonwebtoken_1 = require("jsonwebtoken");
 const constants_1 = require("../utils/constants");
 const prisma_1 = __importDefault(require("../utils/prisma"));
+const verifyToken_1 = __importDefault(require("../utils/verifyToken"));
 const authRoute = (0, express_1.Router)();
 authRoute.post("/register", async (req, res) => {
     console.log(req.body);
@@ -36,7 +36,7 @@ authRoute.post("/register", async (req, res) => {
         return res.json({ err });
     }
 });
-authRoute.get("/me", authTokenVerify_1.verifyAccessToken, async (req, res) => {
+authRoute.get("/me", verifyToken_1.default.verifyTokenAndAuthorization, async (req, res) => {
     if (!req.userId) {
         return res.send({ err: "UnAuth" });
     }

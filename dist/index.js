@@ -7,6 +7,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = require("dotenv");
 const express_1 = __importDefault(require("express"));
+const express_session_1 = __importDefault(require("express-session"));
 const auth_1 = __importDefault(require("./Routes/auth"));
 const cart_1 = __importDefault(require("./Routes/cart"));
 const order_1 = __importDefault(require("./Routes/order"));
@@ -16,6 +17,16 @@ const prisma_1 = __importDefault(require("./utils/prisma"));
 const app = (0, express_1.default)();
 async function main() {
     (0, dotenv_1.config)();
+    app.use((0, express_session_1.default)({
+        resave: false,
+        saveUninitialized: false,
+        secret: "process.env.SESSION_SECRET",
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 7,
+            sameSite: true,
+        },
+    }));
+    app.set("trust proxy", 1);
     app.use((0, cors_1.default)({
         origin: ["http://localhost:3000", "https://aranwindows.vercel.app"],
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",

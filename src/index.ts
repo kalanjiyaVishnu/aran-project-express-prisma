@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 import { config } from "dotenv"
 import express from "express"
+import session from "express-session"
 import authRoute from "./Routes/auth"
 import cartRoute from "./Routes/cart"
 import orderRoute from "./Routes/order"
@@ -15,8 +16,22 @@ async function main() {
   config()
 
   app.use(
+    session({
+      resave: false,
+      saveUninitialized: false,
+      secret: "process.env.SESSION_SECRET",
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        sameSite: true,
+        // httpOnly: true,
+      },
+    })
+  )
+  app.set("trust proxy", 1)
+  app.use(
     cors({
       origin: ["http://localhost:3000", "https://aranwindows.vercel.app"],
+      // origin: "https://aranwindows.vercel.app",
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       preflightContinue: false,
       optionsSuccessStatus: 204,

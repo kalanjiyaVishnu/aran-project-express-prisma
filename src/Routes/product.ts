@@ -120,7 +120,8 @@ productRoute.post("/add", verifyAccessAndAdmin, async (req, res) => {
     categories?: Array<string>
   }
 
-  const { name, available, price, categories }: userProductInputs = req.body
+  const { name, available, price, categories, images }: userProductInputs =
+    req.body
   let product
   try {
     if (categories) {
@@ -135,6 +136,7 @@ productRoute.post("/add", verifyAccessAndAdmin, async (req, res) => {
           name,
           available,
           price,
+          images,
           cateGory: {
             connectOrCreate: categories.map((category) => {
               return {
@@ -155,6 +157,7 @@ productRoute.post("/add", verifyAccessAndAdmin, async (req, res) => {
           name,
           available,
           price,
+          images,
         },
       })
     }
