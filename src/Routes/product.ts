@@ -230,19 +230,19 @@ productRoute.delete("/:pid", async (req, res) => {
   let product
   let date = new Date()
   try {
-    product = await prisma.product.update({
-      where: {
-        id: Number(req.params.pid),
-      },
-      data: {
-        deletedAt: date,
-      },
-    })
-    // product = await prisma.product.delete({
+    // product = await prisma.product.update({
     //   where: {
     //     id: Number(req.params.pid),
     //   },
+    //   data: {
+    //     deletedAt: date,
+    //   },
     // })
+    await prisma.product.delete({
+      where: {
+        id: Number(req.params.pid),
+      },
+    })
   } catch (e) {
     console.log(e)
     return res
@@ -253,7 +253,7 @@ productRoute.delete("/:pid", async (req, res) => {
       .end()
   }
 
-  return res.status(200).json({ data: product })
+  return res.status(200).json({ data: product, success: "true" })
 })
 
 // const addAllProduct = async () => {

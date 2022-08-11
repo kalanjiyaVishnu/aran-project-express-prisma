@@ -45,6 +45,7 @@ cartRoute.post("/addItem", async (req, res) => {
                 userId: req.userId,
             },
         });
+        console.log("addedProduct", addedProduct);
         res.status(200).json({ success: true, id: addedProduct.id });
     }
     catch (e) {

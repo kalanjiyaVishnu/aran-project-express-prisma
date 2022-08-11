@@ -44,6 +44,7 @@ cartRoute.post("/addItem", async (req: any, res) => {
         userId: req.userId,
       },
     })
+    console.log("addedProduct", addedProduct)
 
     res.status(200).json({ success: true, id: addedProduct.id })
     // await prisma.user.update({

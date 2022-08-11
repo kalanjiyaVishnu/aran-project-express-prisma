@@ -14,6 +14,7 @@ const order_1 = __importDefault(require("./Routes/order"));
 const product_1 = __importDefault(require("./Routes/product"));
 const user_1 = __importDefault(require("./Routes/user"));
 const prisma_1 = __importDefault(require("./utils/prisma"));
+const verifyToken_1 = __importDefault(require("./utils/verifyToken"));
 const app = (0, express_1.default)();
 async function main() {
     (0, dotenv_1.config)();
@@ -43,7 +44,7 @@ async function main() {
     app.use("/auth", auth_1.default);
     app.use("/user", user_1.default);
     app.use("/product", product_1.default);
-    app.use("/cart", cart_1.default);
+    app.use("/cart", verifyToken_1.default.verifyTokenAndAuthorization, cart_1.default);
     app.use("/order", order_1.default);
     app.get("/delete-all", async (_, res) => {
         try {

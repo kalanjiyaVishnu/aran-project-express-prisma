@@ -214,12 +214,9 @@ productRoute.delete("/:pid", async (req, res) => {
     let product;
     let date = new Date();
     try {
-        product = await prisma_1.default.product.update({
+        await prisma_1.default.product.delete({
             where: {
                 id: Number(req.params.pid),
-            },
-            data: {
-                deletedAt: date,
             },
         });
     }
@@ -232,7 +229,7 @@ productRoute.delete("/:pid", async (req, res) => {
             .status(500)
             .end();
     }
-    return res.status(200).json({ data: product });
+    return res.status(200).json({ data: product, success: "true" });
 });
 exports.default = productRoute;
 //# sourceMappingURL=product.js.map

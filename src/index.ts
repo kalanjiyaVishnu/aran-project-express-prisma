@@ -9,6 +9,7 @@ import orderRoute from "./Routes/order"
 import productRoute from "./Routes/product"
 import userRoute from "./Routes/user"
 import prisma from "./utils/prisma"
+import verifyToken from "./utils/verifyToken"
 
 const app = express()
 
@@ -49,7 +50,7 @@ async function main() {
   app.use("/auth", authRoute)
   app.use("/user", userRoute)
   app.use("/product", productRoute)
-  app.use("/cart", cartRoute)
+  app.use("/cart", verifyToken.verifyTokenAndAuthorization, cartRoute)
   app.use("/order", orderRoute)
   app.get("/delete-all", async (_, res) => {
     try {
