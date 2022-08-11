@@ -18,7 +18,7 @@ const app = (0, express_1.default)();
 async function main() {
     (0, dotenv_1.config)();
     app.use((0, cors_1.default)({
-        origin: "http://localhost:3000",
+        origin: ["http://localhost:3000", "https://aranwindows.vercel.app"],
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
         preflightContinue: false,
         optionsSuccessStatus: 204,

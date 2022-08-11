@@ -17,7 +17,7 @@ async function main() {
 
   app.use(
     cors({
-      origin: "http://localhost:3000",
+      origin: ["http://localhost:3000", "https://aranwindows.vercel.app"],
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       preflightContinue: false,
       optionsSuccessStatus: 204,
