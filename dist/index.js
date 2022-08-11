@@ -31,11 +31,22 @@ async function main() {
         res.status(200).json("Hello Bob");
     });
     app.use(authTokenVerify_1.verifyAccessToken);
+    app.use("/auth", auth_1.default);
     app.use("/user", user_1.default);
     app.use("/product", product_1.default);
     app.use("/cart", cart_1.default);
     app.use("/order", order_1.default);
-    app.use("/auth", auth_1.default);
+    app.use("/deleteAll", async (_, res) => {
+        try {
+            await prisma_1.default.product.deleteMany({});
+            await prisma_1.default.user.deleteMany({});
+            await prisma_1.default.order.deleteMany({});
+            return res.send({ message: "All data deleted" });
+        }
+        catch (error) {
+            return res.send({ Errr: error });
+        }
+    });
 }
 main()
     .then(() => {

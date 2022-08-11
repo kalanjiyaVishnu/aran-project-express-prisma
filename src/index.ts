@@ -32,11 +32,21 @@ async function main() {
     res.status(200).json("Hello Bob")
   })
   app.use(verifyAccessToken)
+  app.use("/auth", authRoute)
   app.use("/user", userRoute)
   app.use("/product", productRoute)
   app.use("/cart", cartRoute)
   app.use("/order", orderRoute)
-  app.use("/auth", authRoute)
+  app.use("/deleteAll", async (_, res) => {
+    try {
+      await prisma.product.deleteMany({})
+      await prisma.user.deleteMany({})
+      await prisma.order.deleteMany({})
+      return res.send({ message: "All data deleted" })
+    } catch (error) {
+      return res.send({ Errr: error })
+    }
+  })
 }
 
 main()

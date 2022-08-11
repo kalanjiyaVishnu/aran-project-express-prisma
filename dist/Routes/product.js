@@ -95,6 +95,33 @@ productRoute.get("/get/categories", async (_, res) => {
     }
     return res.status(200).json({ data: CateGories });
 });
+productRoute.get("/getByCat/:cat", async (req, res) => {
+    var _a;
+    let cat = req.params.cat;
+    try {
+        let catProducts = await prisma_1.default.cateGory.findMany({
+            where: {
+                name: cat,
+            },
+            select: {
+                Product: {
+                    take: 10,
+                },
+            },
+        });
+        return res.status(200).json({ data: ((_a = catProducts[0]) === null || _a === void 0 ? void 0 : _a.Product) || [] });
+    }
+    catch (e) {
+        console.log(e);
+        return res
+            .json({
+            err: "No CateGories Found",
+            sol: `${cat} this is not availble try searching for other categories`,
+        })
+            .status(200)
+            .end();
+    }
+});
 productRoute.post("/add", authTokenVerify_1.verifyAccessAndAdmin, async (req, res) => {
     const { name, available, price, categories } = req.body;
     let product;

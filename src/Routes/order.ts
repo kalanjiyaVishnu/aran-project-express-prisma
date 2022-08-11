@@ -86,7 +86,7 @@ orderRoute.post("/buy", async (req: any, res) => {
               product_data: {
                 name: p!.name,
               },
-              unit_amount:  100,
+              unit_amount: p!.price * 100,
             },
             quantity,
           },
@@ -97,13 +97,14 @@ orderRoute.post("/buy", async (req: any, res) => {
       await sendMail({
         to: data.email,
         html: `
+        
             <p>Hi 
             ${data.name} 
             The Required Prodcut You Purchaced Have Been TRacked And PayMent Have
             Been Made Down and Will Let you When We Can Get It At Your DoorStep
           </p>
           <h1>Thank You</h1>
-          <a href="">Continue YOur Shopping</a>
+          <a href="">Continue Your Shopping</a>
           <a href="${session.url}">Plese pay the amount</a>
         `,
         subject: "Order Confirmation",

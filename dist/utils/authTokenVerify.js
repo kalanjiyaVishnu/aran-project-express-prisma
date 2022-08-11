@@ -9,7 +9,7 @@ const jsonwebtoken_1 = require("jsonwebtoken");
 const constants_1 = require("./constants");
 const prisma_1 = __importDefault(require("./prisma"));
 const verifyAccessToken = async (req, res, next) => {
-    console.log("something");
+    console.log('  req.cookies["access-token"]', req.cookies["access-token"]);
     if (!req.cookies["access-token"]) {
         console.log("no cookie sent");
         return next();
@@ -20,7 +20,7 @@ const verifyAccessToken = async (req, res, next) => {
         token = (0, jsonwebtoken_1.verify)(req.cookies["access-token"], constants_1.ACCESS_TOKEN);
     }
     catch (error) {
-        return res.status(400).json({ err: "token Error" });
+        return res.status(200).json({ err: "token Error", sol: "Try Login Again" });
     }
     let user;
     try {
@@ -46,7 +46,7 @@ const verifyAccessAndAdmin = async (req, res, next) => {
             next();
         }
         else
-            res.status(400).json({ err: "No Auth To Perfom That Task" });
+            res.status(200).json({ err: "No Auth To Perfom That Task" });
     });
 };
 exports.verifyAccessAndAdmin = verifyAccessAndAdmin;

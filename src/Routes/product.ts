@@ -86,6 +86,32 @@ productRoute.get("/get/categories", async (_, res) => {
   return res.status(200).json({ data: CateGories })
 })
 
+productRoute.get("/getByCat/:cat", async (req, res) => {
+  let cat = req.params.cat
+  try {
+    let catProducts = await prisma.cateGory.findMany({
+      where: {
+        name: cat,
+      },
+      select: {
+        Product: {
+          take: 10,
+        },
+      },
+    })
+    return res.status(200).json({ data: catProducts[0]?.Product || [] })
+  } catch (e) {
+    console.log(e)
+    return res
+      .json({
+        err: "No CateGories Found",
+        sol: `${cat} this is not availble try searching for other categories`,
+      })
+      .status(200)
+      .end()
+  }
+})
+
 productRoute.post("/add", verifyAccessAndAdmin, async (req, res) => {
   interface userProductInputs {
     name: string

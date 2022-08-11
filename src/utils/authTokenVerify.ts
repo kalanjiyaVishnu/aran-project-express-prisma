@@ -5,11 +5,9 @@ import { ACCESS_TOKEN } from "./constants"
 import prisma from "./prisma"
 
 export const verifyAccessToken = async (req: any, res: any, next: any) => {
-  console.log("something");
-  
+  console.log('  req.cookies["access-token"]', req.cookies["access-token"])
   if (!req.cookies["access-token"]) {
     console.log("no cookie sent")
-
     return next()
   }
   console.log("something")
@@ -18,7 +16,7 @@ export const verifyAccessToken = async (req: any, res: any, next: any) => {
   try {
     token = verify(req.cookies["access-token"], ACCESS_TOKEN)
   } catch (error) {
-    return res.status(400).json({ err: "token Error" })
+    return res.status(200).json({ err: "token Error", sol: "Try Login Again" })
   }
 
   let user
@@ -49,6 +47,6 @@ export const verifyAccessAndAdmin = async (
   verifyAccessToken(req, res, () => {
     if (req.userRole === Role.ADMIN.toString()) {
       next()
-    } else res.status(400).json({ err: "No Auth To Perfom That Task" })
+    } else res.status(200).json({ err: "No Auth To Perfom That Task" })
   })
 }
