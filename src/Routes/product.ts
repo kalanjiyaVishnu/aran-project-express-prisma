@@ -117,6 +117,7 @@ productRoute.post("/add", verifyAccessAndAdmin, async (req, res) => {
     name: string
     available: boolean
     price: number
+    images: string[]
     categories?: Array<string>
   }
 
