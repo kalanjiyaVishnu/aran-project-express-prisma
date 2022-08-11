@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const authTokenVerify_1 = require("./utils/authTokenVerify");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = require("dotenv");
@@ -30,13 +29,12 @@ async function main() {
         console.log("hey bob");
         res.status(200).json("Hello Bob");
     });
-    app.use(authTokenVerify_1.verifyAccessToken);
     app.use("/auth", auth_1.default);
     app.use("/user", user_1.default);
     app.use("/product", product_1.default);
     app.use("/cart", cart_1.default);
     app.use("/order", order_1.default);
-    app.use("/deleteAll", async (_, res) => {
+    app.get("/delete-all", async (_, res) => {
         try {
             await prisma_1.default.product.deleteMany({});
             await prisma_1.default.user.deleteMany({});

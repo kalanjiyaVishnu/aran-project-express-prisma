@@ -1,3 +1,4 @@
+import { verifyAccessToken } from "./../utils/authTokenVerify"
 import { Role, User } from "@prisma/client"
 import { compare, hash } from "bcrypt"
 import { Router } from "express"
@@ -21,7 +22,7 @@ authRoute.post("/register", async (req, res) => {
 
   try {
     const hashedPasss = await hash(pass, 10)
-    const user = await prisma.user.create({
+    const user: User = await prisma.user.create({
       data: {
         name: name,
         email: email,
@@ -34,7 +35,7 @@ authRoute.post("/register", async (req, res) => {
     return res.json({ err })
   }
 })
-authRoute.get("/me", async (req: any, res) => {
+authRoute.get("/me", verifyAccessToken, async (req: any, res) => {
   if (!req.userId) {
     return res.send({ err: "UnAuth" })
   }

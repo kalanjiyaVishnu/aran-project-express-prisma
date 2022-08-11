@@ -31,13 +31,13 @@ async function main() {
     console.log("hey bob")
     res.status(200).json("Hello Bob")
   })
-  app.use(verifyAccessToken)
+  // app.use(verifyAccessToken)
   app.use("/auth", authRoute)
   app.use("/user", userRoute)
   app.use("/product", productRoute)
   app.use("/cart", cartRoute)
   app.use("/order", orderRoute)
-  app.use("/deleteAll", async (_, res) => {
+  app.get("/delete-all", async (_, res) => {
     try {
       await prisma.product.deleteMany({})
       await prisma.user.deleteMany({})
